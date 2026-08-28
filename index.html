@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kandula | Referral management for personal injury law firms</title>
+<meta name="description" content="Kandula turns an opaque referral network into a transparent, forecasted asset for high-volume Personal Injury law firms.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kandula.ai/">
+<meta property="og:title" content="Kandula | Referral management for personal injury law firms">
+<meta property="og:description" content="Kandula turns an opaque referral network into a transparent, forecasted asset for high-volume Personal Injury law firms.">
+<meta property="og:image" content="https://kandula.ai/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Kandula Complete Brand Guidelines (Softriver, 2026).
+     Primary: White #FFFFFF · Calming Blue Grey #C9D5D9 · Night #162930
+     Grayscale: Graphite #6E7180 · Space #9DA2B3 · Steel #BCBFCC · Smoke #D3D6E0 · Cloud #EDEFF7
+     Type: Geist Medium/Regular. Headings -3% tracking, body -2%, captions 0%. */
+  :root {
+    --white: #ffffff;
+    --cbg: #c9d5d9;
+    --night: #162930;
+    --graphite: #6e7180;
+    --space: #9da2b3;
+    --steel: #bcbfcc;
+    --smoke: #d3d6e0;
+    --cloud: #edeff7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Geist', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    background: var(--white);
+    color: var(--night);
+  }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; width: 100%; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero — brand book "Design Layouts": Night field, lockup top-left,
+     display tagline, light Find More button, tusk graphic lower-right. */
+  .hero {
+    position: relative;
+    background: var(--night);
+    color: var(--white);
+    overflow: hidden;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero .tusk {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: min(44vw, 560px);
+    aspect-ratio: 1287 / 1232;
+    background: var(--graphite);
+    opacity: 1;
+    -webkit-mask: url('tusk.png') no-repeat bottom right / contain;
+    mask: url('tusk.png') no-repeat bottom right / contain;
+    pointer-events: none;
+  }
+  .hero-nav {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hero-nav .logo { height: 34px; width: auto; }
+  .hero-nav .signin {
+    color: var(--cbg);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    z-index: 1;
+  }
+  .hero-nav .signin:hover { color: var(--white); }
+  .hero-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-top: 48px;
+    padding-bottom: 96px;
+    position: relative;
+    z-index: 1;
+  }
+  h1 {
+    font-weight: 500;
+    font-size: clamp(36px, 5.6vw, 84px);
+    line-height: 1.06;
+    letter-spacing: -0.03em; /* -3% per type hierarchy */
+    white-space: nowrap;
+  }
+  .hero p.lede {
+    margin-top: 28px;
+    font-size: clamp(18px, 2vw, 24px);
+    letter-spacing: -0.02em; /* -2% body */
+    line-height: 1.45;
+    color: var(--cbg);
+    max-width: 46ch;
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 44px;
+    background: var(--cbg);
+    color: var(--night);
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    padding: 15px 34px;
+    border: none;
+  }
+  .btn:hover { background: var(--white); }
+
+  /* About — White surface, Night text (approved pairing), approved brand copy. */
+  .about { padding: 110px 0 90px; }
+  .about .kicker {
+    font-size: 17px;
+    color: var(--graphite);
+    letter-spacing: 0;
+    margin-bottom: 18px;
+  }
+  .about h2 {
+    font-weight: 500;
+    font-size: clamp(30px, 4vw, 48px);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    max-width: 22ch;
+  }
+  .about p {
+    margin-top: 30px;
+    font-size: clamp(17px, 1.6vw, 21px);
+    letter-spacing: -0.02em;
+    line-height: 1.55;
+    color: var(--graphite);
+    max-width: 62ch;
+  }
+
+  /* Three quiet pillars — Cloud cards, Night text. */
+  .pillars { padding: 0 0 110px; }
+  .pillars .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .pillars .card {
+    background: var(--cloud);
+    padding: 34px 30px 38px;
+  }
+  .pillars h3 {
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+  .pillars p {
+    margin-top: 12px;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: var(--graphite);
+  }
+
+  /* Request access — Night field like the hero, so the page closes where it
+     opened. Two columns: the ask on the field, the form on a white card, the
+     Carta/Addepar shape for a request-a-demo panel. */
+  .request {
+    background: var(--night);
+    color: var(--white);
+    padding: 110px 0 120px;
+  }
+  .request .cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
+    gap: clamp(48px, 7vw, 110px);
+    align-items: start;
+  }
+  .request .kicker {
+    font-size: 17px;
+    letter-spacing: 0;
+    color: var(--space);
+    margin-bottom: 18px;
+  }
+  .request h2 {
+    font-weight: 500;
+    font-size: clamp(30px, 4vw, 48px);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    max-width: 16ch;
+  }
+  .request .sub {
+    margin-top: 26px;
+    font-size: clamp(17px, 1.6vw, 20px);
+    letter-spacing: -0.02em;
+    line-height: 1.55;
+    color: var(--cbg);
+    max-width: 44ch;
+  }
+  .request .meta {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(201, 213, 217, 0.22);
+    display: grid;
+    gap: 12px;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: var(--space);
+    max-width: 44ch;
+  }
+  .request .card {
+    background: var(--white);
+    color: var(--night);
+    padding: 40px 40px 34px;
+  }
+  .request .card h3 {
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+  /* Honeypot: removed from sight and from the tab order, but present in the DOM
+     for form-filling bots. Not display:none, which the smarter ones check. */
+  .request .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .request .field { margin-top: 22px; }
+  .request .field:first-of-type { margin-top: 28px; }
+  .request label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--night);
+    margin-bottom: 8px;
+  }
+  .request input {
+    width: 100%;
+    height: 48px;
+    font-family: inherit;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    color: var(--night);
+    background: var(--white);
+    border: 1px solid var(--steel);
+    padding: 0 14px;
+    outline: none;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+  .request input::placeholder { color: var(--space); }
+  .request input:hover { border-color: var(--space); }
+  .request input:focus {
+    border-color: var(--night);
+    box-shadow: 0 0 0 3px var(--smoke);
+  }
+  .request textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: var(--night);
+    background: var(--white);
+    border: 1px solid var(--steel);
+    padding: 12px 14px;
+    outline: none;
+    resize: vertical;
+    min-height: 84px;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+  .request textarea::placeholder { color: var(--space); }
+  .request textarea:hover { border-color: var(--space); }
+  .request textarea:focus {
+    border-color: var(--night);
+    box-shadow: 0 0 0 3px var(--smoke);
+  }
+  .request .optional {
+    font-weight: 400;
+    color: var(--graphite);
+  }
+  .request .submit {
+    margin-top: 28px;
+    width: 100%;
+    height: 50px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    background: var(--night);
+    border: none;
+    cursor: pointer;
+    transition: background 120ms ease;
+  }
+  .request .submit:hover { background: #223d47; }
+  .request .submit:disabled { background: var(--space); cursor: default; }
+  .request .fine {
+    margin-top: 16px;
+    font-size: 13px;
+    letter-spacing: 0;
+    line-height: 1.5;
+    color: var(--graphite);
+  }
+  .request .done {
+    display: none;
+    padding: 8px 0 4px;
+  }
+  .request .done h3 {
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.03em;
+  }
+  .request .done p {
+    margin-top: 12px;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.55;
+    color: var(--graphite);
+  }
+  @media (max-width: 900px) {
+    .request .cols { grid-template-columns: 1fr; }
+    .request .card { padding: 32px 26px 28px; }
+  }
+
+  /* Footer — Night field, CBG text, secondary lockup. */
+  footer {
+    background: var(--night);
+    color: var(--space);
+    padding: 56px 0;
+  }
+  footer .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  footer .logo { height: 24px; width: auto; }
+  footer .fine { font-size: 15px; letter-spacing: 0; }
+  footer .legal {
+    display: flex;
+    gap: 20px;
+    font-size: 15px;
+  }
+  footer .legal a {
+    color: var(--space);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  footer .legal a:hover { color: var(--cbg); }
+  @media (max-width: 680px) {
+    h1 {
+      white-space: normal;
+      font-size: clamp(30px, 8.4vw, 44px);
+    }
+    .hero { min-height: 88svh; }
+    .hero-nav { padding-top: 28px; padding-bottom: 28px; }
+    .hero-nav .logo { height: 28px; }
+    .hero-main { padding-bottom: 64px; }
+    .hero .tusk { width: 52vw; opacity: 0.55; }
+    .btn {
+      display: block;
+      text-align: center;
+      margin-top: 36px;
+    }
+    .about { padding: 72px 0 56px; }
+    .pillars { padding-bottom: 72px; }
+    footer { padding: 40px 0; }
+    footer .row { justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="tusk" aria-hidden="true"></div>
+  <div class="wrap hero-nav">
+    <img class="logo" src="logo-cbg.svg" alt="kandula">
+    <a class="signin" href="https://app.kandula.ai">Sign in</a>
+  </div>
+  <div class="wrap hero-main">
+    <div>
+      <h1>Transforming Referrals.<br>Unleashing Value.</h1>
+      <p class="lede">Referral management for high-volume Personal Injury law firms.
+      Every referred case, its status, and its value, in one place for the firm that
+      sent it and the firm working it.</p>
+      <a class="btn" href="#request-access">Request access</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <p class="kicker">About</p>
+    <h2>An opaque referral network becomes a transparent, forecasted asset.</h2>
+    <p>Kandula is a sophisticated SaaS solution designed for high-volume Personal
+    Injury law firms, turning an opaque referral network into a transparent,
+    forecasted asset. By delivering real-time insights and accountability across a
+    firm's co-counsel partnerships, Kandula optimizes case referrals with smarter
+    matching and seamless integration across diverse Case Management Systems. With
+    deep insights from hundreds of thousands of PI cases, Kandula empowers firms to
+    maximize their referral pipeline's potential and performance.</p>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="wrap">
+    <div class="grid">
+      <div class="card">
+        <h3>Every referral, accounted for</h3>
+        <p>Track each referred case from review to resolution, with live status for
+        both the originating firm and the partner firm working it.</p>
+      </div>
+      <div class="card">
+        <h3>Updates without phone calls</h3>
+        <p>Case updates flow to the people who need them, so nobody dials co-counsel
+        to ask where a case stands.</p>
+      </div>
+      <div class="card">
+        <h3>Works with your systems</h3>
+        <p>Kandula is CMS-agnostic, integrating with the case management systems
+        firms already run instead of replacing them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="request" id="request-access">
+  <div class="wrap cols">
+    <div>
+      <p class="kicker">Request access</p>
+      <h2>Bring your referral network into view.</h2>
+      <p class="sub">Kandula is currently onboarding firms by invitation. Tell us about
+      your practice and we will follow up directly.</p>
+      <div class="meta">
+        <p>Built for high-volume Personal Injury firms and their co-counsel partners.</p>
+        <p>Works alongside the case management systems your firms already run.</p>
+      </div>
+    </div>
+    <!-- A hosted form relay, decided 2026-08-25. This reverses the first-party
+         endpoint built on 2026-08-24: a marketing contact form is not worth a
+         public unauthenticated write path, a migration, a CSRF exemption and a
+         throttle living in the application forever.
+
+         Deliberately the plain-HTML integration and NOT the JavaScript widget.
+         No third-party script loads on this page, which keeps the signed
+         Cookies Policy accurate — that document is why the honeypot below was
+         chosen over CAPTCHA in the first place, and the same constraint rules
+         out an embed.
+
+         _next brings the visitor back here with ?requested=1 so the received
+         state below stays ours rather than a vendor's thank-you page. _gotcha is
+         the relay's own honeypot, discarded server-side. Nothing here depends on
+         app.kandula.ai, so this no longer waits on RLY-216. -->
+    <div class="card">
+      <!-- 🔴 TWO THINGS TO SET BEFORE THIS PAGE GOES ANYWHERE REAL.
+
+           1. Replace RECIPIENT below with the inbox that should receive leads.
+              FormSubmit needs no account: the first submission sends that address
+              a one-time confirmation link, and the form is live once it is clicked.
+              ⚠️ The address is public in this HTML. After confirming, FormSubmit
+              issues an alias endpoint (formsubmit.co/<random>) that forwards to the
+              same inbox without exposing it. Swap to the alias before launch.
+
+           2. Set _next to whatever host is actually serving this page. It must be
+              absolute. It is the tunnel while demoing and https://kandula.ai/ once
+              the domain serves. A stale _next sends a prospect to a dead host after
+              they have already submitted, which looks like the form failed.
+
+           _captcha=false is deliberate and load-bearing: it stops FormSubmit
+           injecting reCAPTCHA, which would put a third-party script on this page
+           and contradict the signed Cookies Policy. _honey below is the spam
+           guard that replaces it. -->
+      <form id="access-form" action="https://formsubmit.co/janderson@zipliens.com" method="POST">
+        <h3>Tell us about your firm</h3>
+        <input type="hidden" name="_next" value="https://kandula.ai/?requested=1">
+        <input type="hidden" name="_subject" value="Kandula access request">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <!-- Honeypot: invisible to people, filled by bots. FormSubmit silently
+             discards any submission carrying a value in _honey. -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="af-website">Website</label>
+          <input id="af-website" name="_honey" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="af-name">Full name</label>
+          <input id="af-name" name="full_name" type="text" autocomplete="name" placeholder="Jane Doe" required>
+        </div>
+        <div class="field">
+          <label for="af-firm">Firm</label>
+          <input id="af-firm" name="firm_name" type="text" autocomplete="organization" placeholder="Doe Injury Law" required>
+        </div>
+        <div class="field">
+          <label for="af-email">Work email</label>
+          <input id="af-email" name="email" type="email" autocomplete="email" placeholder="jane@doeinjurylaw.com" required>
+        </div>
+        <div class="field">
+          <label for="af-message">About your referral practice <span class="optional">(optional)</span></label>
+          <textarea id="af-message" name="message" rows="3" maxlength="2000"
+            placeholder="Roughly how many cases you refer out or take on, the case types, and where you practice."></textarea>
+        </div>
+        <button class="submit" type="submit">Request access</button>
+        <p class="fine" id="access-note">We use these details only to respond to your request.</p>
+      </form>
+      <div class="done" id="access-done">
+        <h3>Request received</h3>
+        <p>Thank you. We will be in touch at the address you provided.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <img class="logo" src="logo-cbg.svg" alt="kandula">
+    <nav class="legal" aria-label="Legal">
+      <!-- The canonical URLs both signed documents cite; exactly these paths. -->
+      <a href="https://app.kandula.ai/privacy-policy/">Privacy Policy</a>
+      <a href="https://app.kandula.ai/terms-of-service/">Terms of Use</a>
+    </nav>
+    <p class="fine">&copy; 2026 Kandula. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // The form POSTs to the relay, which returns the visitor here with
+  // ?requested=1 via the _next field. Render the received state. No JS is
+  // needed to submit, only to show the outcome inline.
+  //
+  // There is no error branch by design: on a failed submission the relay shows
+  // its own page and never redirects, so a ?requested=error case could not be
+  // reached and would be dead code pretending to handle something.
+  (function () {
+    var requested = new URLSearchParams(window.location.search).get("requested");
+    if (requested !== "1") { return; }
+    var section = document.getElementById("request-access");
+    document.getElementById("access-form").style.display = "none";
+    document.getElementById("access-done").style.display = "block";
+    if (section) { section.scrollIntoView(); }
+  })();
+</script>
+
+</body>
+</html>
