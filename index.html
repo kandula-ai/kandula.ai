@@ -470,12 +470,14 @@
     <div class="card">
       <!-- 🔴 TWO THINGS TO SET BEFORE THIS PAGE GOES ANYWHERE REAL.
 
-           1. Replace RECIPIENT below with the inbox that should receive leads.
-              FormSubmit needs no account: the first submission sends that address
-              a one-time confirmation link, and the form is live once it is clicked.
+           1. The action names the primary inbox (sales). FormSubmit needs no
+              account: the first submission sends that address a one-time
+              confirmation link, and the form is live once it is clicked.
               ⚠️ The address is public in this HTML. After confirming, FormSubmit
-              issues an alias endpoint (formsubmit.co/<random>) that forwards to the
-              same inbox without exposing it. Swap to the alias before launch.
+              can issue an alias endpoint (formsubmit.co/<random>) that forwards to
+              the same inbox without exposing it; the owner requests it from
+              formsubmit.co and swaps it in here. Additional recipients go in _cc
+              below and need no confirmation.
 
            2. Set _next to whatever host is actually serving this page. It must be
               absolute. It is the tunnel while demoing and https://kandula.ai/ once
@@ -486,12 +488,15 @@
            injecting reCAPTCHA, which would put a third-party script on this page
            and contradict the signed Cookies Policy. _honey below is the spam
            guard that replaces it. -->
-      <form id="access-form" action="https://formsubmit.co/128fa6092d57f0bb338666fce2ca2758" method="POST">
+      <form id="access-form" action="https://formsubmit.co/janderson@zipliens.com" method="POST">
         <h3>Tell us about your firm</h3>
         <input type="hidden" name="_next" value="https://kandula.ai/?requested=1">
         <input type="hidden" name="_subject" value="Kandula access request">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
+        <!-- _cc copies every lead to the PM. FormSubmit delivers CC copies without
+             a confirmation step. Public in this HTML. -->
+        <input type="hidden" name="_cc" value="wfox@swordsweeper.com">
         <!-- Honeypot: invisible to people, filled by bots. FormSubmit silently
              discards any submission carrying a value in _honey. -->
         <div class="hp-field" aria-hidden="true">
