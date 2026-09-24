@@ -44,7 +44,7 @@
   .wrap { max-width: 1120px; width: 100%; margin: 0 auto; padding: 0 24px; }
 
   /* Hero — brand book "Design Layouts": Night field, lockup top-left,
-     display tagline, light Find More button, tusk graphic lower-right. */
+     display tagline, light Find More button. */
   .hero {
     position: relative;
     background: var(--night);
@@ -53,18 +53,6 @@
     min-height: 92vh;
     display: flex;
     flex-direction: column;
-  }
-  .hero .tusk {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: min(44vw, 560px);
-    aspect-ratio: 1287 / 1232;
-    background: var(--graphite);
-    opacity: 1;
-    -webkit-mask: url('tusk.png') no-repeat bottom right / contain;
-    mask: url('tusk.png') no-repeat bottom right / contain;
-    pointer-events: none;
   }
   .hero-nav {
     padding-top: 40px;
@@ -372,7 +360,6 @@
     .hero-nav { padding-top: 28px; padding-bottom: 28px; }
     .hero-nav .logo { height: 28px; }
     .hero-main { padding-bottom: 64px; }
-    .hero .tusk { width: 52vw; opacity: 0.55; }
     .btn {
       display: block;
       text-align: center;
@@ -388,9 +375,8 @@
 <body>
 
 <section class="hero">
-  <div class="tusk" aria-hidden="true"></div>
   <div class="wrap hero-nav">
-    <img class="logo" src="logo-cbg.svg" alt="kandula">
+    <img class="logo" src="logo-white.png" alt="kandula">
     <!-- App links point at app.kandula.ai, live since 2026-09-11; app.caserelay.com keeps serving as an alias through the event. -->
     <a class="signin" href="https://app.kandula.ai">Sign in</a>
   </div>
@@ -534,7 +520,7 @@
 
 <footer>
   <div class="wrap row">
-    <img class="logo" src="logo-cbg.svg" alt="kandula">
+    <img class="logo" src="logo-white.png" alt="kandula">
     <nav class="legal" aria-label="Legal">
       <!-- The canonical URLs both signed documents cite; exactly these paths. -->
       <a href="https://app.kandula.ai/privacy-policy/">Privacy Policy</a>
